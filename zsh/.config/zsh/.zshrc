@@ -1,12 +1,12 @@
 # Autocompletion
-autoload -U compinit && compinit
+autoload -U compinit && compinit -D
 
 bindkey '\e[A' history-search-backward
 bindkey '\e[B' history-search-forward
 
 # Load Spaceship - prompt
-autoload -U promptinit; promptinit
-prompt spaceship
+# autoload -U promptinit; promptinit
+# prompt spaceship
 
 SPACESHIP_DIR_COLOR=blue
 SPACESHIP_GOLANG_SYMBOL='ﳑ '
@@ -34,12 +34,14 @@ help() {
     "$@" --help 2>&1 | bathelp
 }
 
-# Syntax highlight
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # NVM - Node Version Manager
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Syntax highlight
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+source /opt/homebrew/opt/spaceship/spaceship.zsh
