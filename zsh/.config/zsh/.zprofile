@@ -6,3 +6,5 @@ export PATH="$PATH:/Users/lstrzepek/.dotnet/tools"
 
 # Export local bin
 export PATH="$PATH:/Users/lstrzepek/.local/bin"
+
+export PATH="$PYENV_ROOT/bin:$PATH"
