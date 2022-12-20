@@ -1,4 +1,4 @@
 alias ls='ls -lAhG' #A-without . and .. G-color h-symlinks
 alias md='mkdir -p' #p-create also intermediate dirs in a/b/c
-
+alias dc='curl -Ls' #Download content from web
 
