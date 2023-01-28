@@ -3,7 +3,9 @@
 # ZSH Plugin manager: https://github.com/zap-zsh/zap
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
-plug "sindresorhus/pure"
+plug "wintermi/zsh-starship"
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+#plug "sindresorhus/pure"
 # plug "spaceship-prompt/spaceship-prompt"
 # source "$ZAP_PLUGIN_DIR/spaceship-prompt/spaceship.zsh"
 # SPACESHIP_DIR_COLOR=blue
@@ -53,3 +55,5 @@ export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SO
 function itermcolors() {
   (curl -Ls $1 > "/tmp/"$2".itermcolors" && open "/tmp/"$2".itermcolors")
 }
+# Zoxide
+eval "$(zoxide init zsh)"

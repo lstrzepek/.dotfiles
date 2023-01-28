@@ -33,17 +33,11 @@ lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 lvim.builtin.dap.active = true
 local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
 pcall(function() require("dap-python").setup(mason_path .. "packages/debugpy/venv/bin/python") end)
-
+pcall(function() require("dap.ext.vscode").load_launchjs() end)
 -- Supported test frameworks are unittest, pytest and django. By default it
 -- tries to detect the runner by probing for pytest.ini and manage.py, if
 -- neither are present it defaults to unittest.
 pcall(function() require("dap-python").test_runner = "pytest" end)
-
-lvim.builtin.which_key.mappings["P"] = {
-  name = "Python",
-  i = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Pick Env" },
-  d = { "<cmd>lua require('swenv.api').get_current_venv()<cr>", "Show Env" },
-}
 
 pcall(function() require("transparent").setup({
   enable = true, -- boolean: enable transparent
@@ -204,10 +198,11 @@ lvim.plugins = {
         "Luxed/ayu-vim",
         "joshdick/onedark.vim",
         "rakr/vim-one",
-        "arcticicestudio/nord-vim",
+        -- "arcticicestudio/nord-vim",
+    "gbprod/nord.nvim",
         "xiyaowong/nvim-transparent",
         -- "AckslD/swenv.nvim",
-        -- "mfussenegger/nvim-dap-python"
+        "mfussenegger/nvim-dap-python"
       -- "folke/trouble.nvim",
       -- cmd = "TroubleToggle",
     },
