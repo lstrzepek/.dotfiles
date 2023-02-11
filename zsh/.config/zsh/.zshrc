@@ -14,6 +14,7 @@ export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 
 plug "$ZDOTDIR/zsh-history"
 plug "$ZDOTDIR/zsh-aliases"
+plug "$ZDOTDIR/zsh-lf"
 
 #Colors
 export LS_COLORS="$(vivid generate nord)"
@@ -55,5 +56,9 @@ export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SO
 function itermcolors() {
   (curl -Ls $1 > "/tmp/"$2".itermcolors" && open "/tmp/"$2".itermcolors")
 }
+
 # Zoxide
 eval "$(zoxide init zsh)"
+
+#Tmux
+export PATH=$XDG_DATA_HOME/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH

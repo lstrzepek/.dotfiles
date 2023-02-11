@@ -5,3 +5,5 @@ alias dc='curl -Ls' #Download content from web
 alias cat='bat'
 alias lt='ls -l --tree'
 alias lv=lvim
+alias tt='tmux new -s $(pwd | sed "s/.*\///g")'
+alias wt='curl wttr.in/Katowice\?0T'
