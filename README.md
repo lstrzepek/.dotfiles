@@ -16,3 +16,9 @@
 `stow --adopt -nvt ~ *` adopt will include existing config into stow
 `stow -vDt ~ zsh` will unlink file from stow for zsh dir
 `stow -vt ~ */` only directories omit README etc.
+
+# Acknowledgments
+
+[Josh Medeski](https://github.com/joshmedeski/dotfiles)
+[Luke Smith](https://github.com/LukeSmithxyz/voidrice)
+
