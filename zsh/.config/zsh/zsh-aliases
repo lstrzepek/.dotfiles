@@ -7,3 +7,5 @@ alias lt='ls -l --tree'
 alias lv=lvim
 alias tt='tmux new -s $(pwd | sed "s/.*\///g")'
 alias wt='curl wttr.in/Katowice\?0T'
+alias gb='git branch | fzf --header "Checkout Recent Branch" --preview "git diff {1} | delta" | xargs git checkout'
+
