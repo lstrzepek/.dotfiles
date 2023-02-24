@@ -1,6 +1,8 @@
 return {
   -- { "shaunsingh/nord.nvim" },
-  { "gbprod/nord.nvim" },
+  { "gbprod/nord.nvim", opts = {
+    transparent = true,
+  } },
   {
     "LazyVim/LazyVim",
     opts = {
