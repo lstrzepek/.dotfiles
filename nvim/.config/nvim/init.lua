@@ -1,3 +1,10 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.options")
 require("config.lazy")
-vim.g.python3_host_prog = "/Users/lstrzepek/.local/share/nvim/.venv/bin/python3"
+require("config.lsp")
+-- local builtin = require('telescope.builtin')
+-- vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+-- vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+-- vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+-- vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
+
