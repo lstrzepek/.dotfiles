@@ -19,6 +19,9 @@ plug "$ZDOTDIR/zsh-lf"
 #Colors
 export LS_COLORS="$(vivid generate nord)"
 
+#CLang
+export CFLAGS="-Wall -Werror -Wextra"
+
 #GoLang
 export GOPATH="$XDG_DATA_HOME/go"
 export PATH="$PATH:$GOPATH/bin"
@@ -63,3 +66,4 @@ eval "$(zoxide init zsh)"
 
 #Tmux
 export PATH=$XDG_DATA_HOME/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
+source /Users/lstrzepek/.config/op/plugins.sh
