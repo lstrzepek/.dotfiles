@@ -26,6 +26,10 @@
 [Elijah Manor](https://www.youtube.com/@ElijahManor)
 [Lokesh Krishna](https://github.com/lokesh-krishna/dotfiles)
 
+## Wallpapers
+
+(Alena Aenami)[https://aenamiart.artstation.com]
+
 # Description
 
 ## delta

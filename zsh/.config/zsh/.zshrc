@@ -20,7 +20,7 @@ plug "$ZDOTDIR/zsh-lf"
 export LS_COLORS="$(vivid generate nord)"
 
 #CLang
-export CFLAGS="-Wall -Werror -Wextra"
+export CFLAGS=""
 
 #GoLang
 export GOPATH="$XDG_DATA_HOME/go"
@@ -67,3 +67,6 @@ eval "$(zoxide init zsh)"
 #Tmux
 export PATH=$XDG_DATA_HOME/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 source /Users/lstrzepek/.config/op/plugins.sh
+
+# opam configuration
+[[ ! -r /Users/lstrzepek/.opam/opam-init/init.zsh ]] || source /Users/lstrzepek/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
