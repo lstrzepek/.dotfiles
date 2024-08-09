@@ -37,6 +37,9 @@ return {
       opts.desc = "See available code actions"
       keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
 
+      opts.desc = "Format file"
+      keymap.set("n", "<leader>cf", vim.lsp.buf.format, opts) -- format document
+
       opts.desc = "Smart rename"
       keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
 
@@ -69,6 +72,12 @@ return {
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
+
+    -- configure c++ server
+    lspconfig["clangd"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
 
     -- configure html server
     lspconfig["html"].setup({
@@ -103,6 +112,12 @@ return {
 
     -- configure python server
     lspconfig["pyright"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    -- configure ocaml server
+    lspconfig["ocamllsp"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
