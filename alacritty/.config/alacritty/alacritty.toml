@@ -14,7 +14,7 @@ style = "Regular"
 [window]
 decorations = "buttonless"
 dynamic_padding = false
-opacity = 0.85
+opacity = 0.96
 
 [window.padding]
 x = 18
