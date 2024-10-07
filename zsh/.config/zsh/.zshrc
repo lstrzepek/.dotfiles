@@ -5,12 +5,6 @@ plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "wintermi/zsh-starship"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
-#plug "sindresorhus/pure"
-# plug "spaceship-prompt/spaceship-prompt"
-# source "$ZAP_PLUGIN_DIR/spaceship-prompt/spaceship.zsh"
-# SPACESHIP_DIR_COLOR=blue
-# SPACESHIP_GOLANG_SYMBOL='ﳑ '
-# SPACESHIP_GOLANG_COLOR=magenta
 
 plug "$ZDOTDIR/zsh-history"
 plug "$ZDOTDIR/zsh-aliases"
@@ -18,13 +12,16 @@ plug "$ZDOTDIR/zsh-lf"
 
 #Colors
 export LS_COLORS="$(vivid generate nord)"
+export EXA_COLORS="uu=30:uR=35:ur=32:uw=33:ux=35:ue=35:gr=32:gw=33:gx=35:tr=32:tw=33:tx=35"
 
-#CLang
-export CFLAGS=""
+#export CLICOLOR=YES
+#test -r "~/.local/bin/dir_colors" && eval $(gdircolors ~/.local/bin/dir_colors)
+#zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 #GoLang
 export GOPATH="$XDG_DATA_HOME/go"
 export PATH="$PATH:$GOPATH/bin"
+
 # Cargo
 . $HOME/.cargo/env
 
@@ -52,14 +49,6 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 # BAT
 export BAT_THEME="Nord"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-
-# NNN
-BLK="04" CHR="04" DIR="04" EXE="00" REG="00" HARDLINK="00" SYMLINK="06" MISSING="00" ORPHAN="01" FIFO="0F" SOCK="0F" OTHER="02"
-export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER"
-
-function itermcolors() {
-  (curl -Ls $1 > "/tmp/"$2".itermcolors" && open "/tmp/"$2".itermcolors")
-}
 
 # Zoxide
 eval "$(zoxide init zsh)"

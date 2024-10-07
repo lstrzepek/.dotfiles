@@ -1,13 +1,12 @@
 #alias ls='ls -lAhG' #A-without . and .. G-color h-symlinks
-alias cc='cc ${CFLAGS}'
-alias ls='exa -a --icons' #A-without . and .. G-color h-symlinks
+alias ls='eza -a --icons' #A-without . and .. G-color h-symlinks
 alias md='mkdir -p' #p-create also intermediate dirs in a/b/c
 alias dc='curl -Ls' #Download content from web
 alias cat='bat'
 alias lt='ls -l --tree'
-alias lv=lvim
 alias tt='tmux new -s $(pwd | sed "s/.*\///g")'
 alias wt='curl wttr.in/Katowice\?0T'
 alias gb='git branch | fzf --header "Checkout Recent Branch" --preview "git diff {1} | delta" | xargs git checkout'
 alias la='ls -a'
 alias ll='ls -la'
+alias tree='eza --tree --icons -a'
