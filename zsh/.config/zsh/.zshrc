@@ -3,16 +3,42 @@
 # ZSH Plugin manager: https://github.com/zap-zsh/zap
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
+plug "zap-zsh/nvm"
 plug "wintermi/zsh-starship"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 
-plug "$ZDOTDIR/zsh-history"
-plug "$ZDOTDIR/zsh-aliases"
 plug "$ZDOTDIR/zsh-lf"
 
-#Colors
+# === History
+HISTSIZE=5000
+HISTFILE=$XDG_CACHE_HOME/.zsh_history
+SAVEHIST=5000
+HISTDUP=erase
+setopt SHARE_HISTORY
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_EXPIRE_DUPS_FIRST
+
+
+# === Aliases
+#alias ls='ls -lAhG' #A-without . and .. G-color h-symlinks
+alias ls='eza -a --icons' #A-without . and .. G-color h-symlinks
+alias md='mkdir -p' #p-create also intermediate dirs in a/b/c
+alias dc='curl -Ls' #Download content from web
+alias cat='bat'
+alias lt='ls -l --tree'
+alias tt='tmux new -s $(pwd | sed "s/.*\///g")'
+alias wt='curl wttr.in/Katowice\?0T'
+alias gb='git branch | fzf --header "Checkout Recent Branch" --preview "git diff {1} | delta" | xargs git checkout'
+alias la='ls -a'
+alias ll='ls -la'
+alias tree='eza --tree --icons -a'
+
+
+# === Colors
 export LS_COLORS="$(vivid generate nord)"
-export EXA_COLORS="uu=30:uR=35:ur=32:uw=33:ux=35:ue=35:gr=32:gw=33:gx=35:tr=32:tw=33:tx=35"
+export EXA_COLORS="uu=30:uR=35:ur=32:uw=33:ux=35:ue=35:gr=32:gw=33:gx=35:tr=32:tw=33:tx=35:da=32"
 
 #export CLICOLOR=YES
 #test -r "~/.local/bin/dir_colors" && eval $(gdircolors ~/.local/bin/dir_colors)
@@ -28,11 +54,6 @@ export PATH="$PATH:$GOPATH/bin"
 # PyEnv - Manage Python versions
 export PYENV_ROOT=$XDG_DATA_HOME/pyenv
 eval "$(pyenv init -)"
-
-# NVM - Node Version Manager
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # FZF
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git --exclude node_modules'
