@@ -51,9 +51,9 @@ export PATH="$PATH:$GOPATH/bin"
 # Cargo
 . $HOME/.cargo/env
 
-# PyEnv - Manage Python versions
-export PYENV_ROOT=$XDG_DATA_HOME/pyenv
-eval "$(pyenv init -)"
+# # PyEnv - Manage Python versions
+# export PYENV_ROOT=$XDG_DATA_HOME/pyenv
+# eval "$(pyenv init -)"
 
 # FZF
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git --exclude node_modules'
