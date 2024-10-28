@@ -9,7 +9,9 @@
 
 [user]
 	name = Łukasz Strzępek
-	email = lstrzepek@users.noreply.github.com
+  email = lstrzepek@users.noreply.github.com
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDPcUnuKBYUAr2Yp44azWFvq2jlJflAfHUSb34Ycl1AW
+
 
 [alias]
 	l   = log --topo-order --pretty=format:'%C(yellow)%h %C(cyan)%cn %C(blue)%cr%C(reset) %s'
@@ -41,4 +43,14 @@
     conflictstyle = diff3
 
 [diff]
-    colorMoved = default
+  colorMoved = default
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+  gpgsign = true
+
