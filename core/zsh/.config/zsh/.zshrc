@@ -3,9 +3,13 @@
 # ZSH Plugin manager: https://github.com/zap-zsh/zap
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
-plug "zap-zsh/nvm"
+#plug "zap-zsh/nvm"
 plug "wintermi/zsh-starship"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d"
 
 plug "$ZDOTDIR/zsh-lf"
 
@@ -45,11 +49,11 @@ export EXA_COLORS="uu=30:uR=35:ur=32:uw=33:ux=35:ue=35:gr=32:gw=33:gx=35:tr=32:t
 #zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 #GoLang
-export GOPATH="$XDG_DATA_HOME/go"
-export PATH="$PATH:$GOPATH/bin"
+#export GOPATH="$XDG_DATA_HOME/go"
+#export PATH="$PATH:$GOPATH/bin"
 
 # Cargo
-. $HOME/.cargo/env
+#. $HOME/.cargo/env
 
 # # PyEnv - Manage Python versions
 # export PYENV_ROOT=$XDG_DATA_HOME/pyenv
@@ -76,6 +80,8 @@ eval "$(zoxide init zsh)"
 
 #Tmux
 export PATH=$XDG_DATA_HOME/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
+
+#1Password
 source /Users/lstrzepek/.config/op/plugins.sh
 
 # opam configuration
