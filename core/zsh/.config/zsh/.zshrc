@@ -1,33 +1,65 @@
-[ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
+if [[ -f "/opt/homebrew/bin/brew" ]] then
+  # If you're using macOS, you'll want this enabled
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
-# ZSH Plugin manager: https://github.com/zap-zsh/zap
-plug "zsh-users/zsh-autosuggestions"
-plug "zsh-users/zsh-syntax-highlighting"
-#plug "zap-zsh/nvm"
-plug "wintermi/zsh-starship"
-export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+# Set the directory we want to store zinit and plugins
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d"
+# Download Zinit, if it's not there yet
+if [ ! -d "$ZINIT_HOME" ]; then
+   mkdir -p "$(dirname $ZINIT_HOME)"
+   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
 
-plug "$ZDOTDIR/zsh-lf"
+# Source/Load zinit
+source "${ZINIT_HOME}/zinit.zsh"
+[ -f "$XDG_DATA_HOME/zap/zap.zsh" ] && source "$XDG_DATA_HOME/zap/zap.zsh"
 
-# === History
-HISTSIZE=5000
-HISTFILE=$XDG_CACHE_HOME/.zsh_history
-SAVEHIST=5000
+# Add in zsh plugins
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
+
+# Add in snippets
+# zinit snippet OMZL::git.zsh
+# zinit snippet OMZP::git
+# zinit snippet OMZP::sudo
+# zinit snippet OMZP::archlinux
+# zinit snippet OMZP::aws
+# zinit snippet OMZP::kubectl
+# zinit snippet OMZP::kubectx
+# zinit snippet OMZP::command-not-found# ZSH Plugin manager: https://github.com/zap-zsh/zap
+
+
+# History
+HISTSIZE=100000
+HISTFILE=$XDG_DATA_HOME/.zsh_history
+SAVEHIST=$HISTSIZE
 HISTDUP=erase
-setopt SHARE_HISTORY
-setopt HIST_SAVE_NO_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_FIND_NO_DUPS
-setopt HIST_EXPIRE_DUPS_FIRST
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 
+# === Colors
+export LS_COLORS="$(vivid generate nord)"
+export EXA_COLORS="uu=30:uR=35:ur=32:uw=33:ux=35:ue=35:gr=32:gw=33:gx=35:tr=32:tw=33:tx=35:da=32"
 
-# === Aliases
-#alias ls='ls -lAhG' #A-without . and .. G-color h-symlinks
-alias ls='eza -a --icons' #A-without . and .. G-color h-symlinks
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+
+# Aliases
+# alias ls='eza -a --icons' #A-without . and .. G-color h-symlinks
+alias ls='ls -F'
 alias md='mkdir -p' #p-create also intermediate dirs in a/b/c
 alias dc='curl -Ls' #Download content from web
 alias cat='bat'
@@ -39,25 +71,13 @@ alias la='ls -a'
 alias ll='ls -la'
 alias tree='eza --tree --icons -a'
 
+# Shell integrations
+eval "$(fzf --zsh)"
+eval "$(zoxide init zsh)"
 
-# === Colors
-export LS_COLORS="$(vivid generate nord)"
-export EXA_COLORS="uu=30:uR=35:ur=32:uw=33:ux=35:ue=35:gr=32:gw=33:gx=35:tr=32:tw=33:tx=35:da=32"
-
-#export CLICOLOR=YES
-#test -r "~/.local/bin/dir_colors" && eval $(gdircolors ~/.local/bin/dir_colors)
-#zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
-#GoLang
-#export GOPATH="$XDG_DATA_HOME/go"
-#export PATH="$PATH:$GOPATH/bin"
-
-# Cargo
-#. $HOME/.cargo/env
-
-# # PyEnv - Manage Python versions
-# export PYENV_ROOT=$XDG_DATA_HOME/pyenv
-# eval "$(pyenv init -)"
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d"
 
 # FZF
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git --exclude node_modules'
@@ -75,9 +95,6 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 export BAT_THEME="Nord"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
-# Zoxide
-eval "$(zoxide init zsh)"
-
 #Tmux
 export PATH=$XDG_DATA_HOME/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 
@@ -86,3 +103,6 @@ source /Users/lstrzepek/.config/op/plugins.sh
 
 # opam configuration
 [[ ! -r /Users/lstrzepek/.opam/opam-init/init.zsh ]] || source /Users/lstrzepek/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+eval "$(op completion zsh)"
+source "$ZDOTDIR/prompt.zsh"
