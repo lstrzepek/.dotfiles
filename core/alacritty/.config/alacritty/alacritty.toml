@@ -21,3 +21,18 @@ y = 16
 [general]
 live_config_reload = true
 import = ["/Users/lstrzepek/.config/alacritty/themes/nord.toml"]
+
+[[keyboard.bindings]]
+chars = "\u0002c"
+key = "T"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002n"
+key = "Tab"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u0002p"
+key = "Tab"
+mods = "Control|Shift"
