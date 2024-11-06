@@ -70,10 +70,12 @@ alias gb='git branch | fzf --header "Checkout Recent Branch" --preview "git diff
 alias la='ls -a'
 alias ll='ls -la'
 alias tree='eza --tree --icons -a'
+alias ts='tmux-session.zsh'
 
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
+eval "$(op completion zsh)"
 
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
@@ -98,6 +100,5 @@ source /Users/lstrzepek/.config/op/plugins.sh
 # opam configuration
 [[ ! -r /Users/lstrzepek/.opam/opam-init/init.zsh ]] || source /Users/lstrzepek/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
-eval "$(op completion zsh)"
 source "$ZDOTDIR/nord-theme.zsh"
 source "$ZDOTDIR/prompt.zsh"

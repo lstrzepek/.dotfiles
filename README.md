@@ -55,12 +55,11 @@ mv ~/.config/<name> ~/.dotfiles/<name>/.config/<name>
 
 # Description
 
-## delta
+* Window Manager: AeroSpace - tile window manager, places windows on screen but also allow to use wirtual desktop
+* Terminal Emulator: Alacritty - connection between MacOs and terminal applications i.e. shell. Handles keyboard mappings for keys which are not supported in terminal like Command key
+* Shell: Zsh - Default shell for MacOs. Should be never use directly in Alacritty
+* Tmux - Terminal multiplexer, to manage multiple terminal session, windows and panes
+* Editor: NeoVim
 
-Improved git diff.
-[https://github.com/dandavison/delta]
-
-## fzf
-
-General-purpose command-line fuzzy finder.
-[https://github.com/junegunn/fzf]
+## Theme
+Configure themes as env variables rather than in separate config files

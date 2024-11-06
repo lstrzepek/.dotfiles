@@ -19,6 +19,7 @@
 export LS_COLORS="$(vivid generate nord)"
 export EXA_COLORS="uu=30:uR=35:ur=32:uw=33:ux=35:ue=35:gr=32:gw=33:gx=35:tr=32:tw=33:tx=35:da=32"
 
+# Generetad by https://minsw.github.io/fzf-color-picker/
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' 
     --color=fg:#eceff4,bg:-1,hl:#81a1c1 
     --color=fg+:#D8DEE9,bg+:-1,hl+:#a3be8c 
