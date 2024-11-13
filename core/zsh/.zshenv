@@ -35,9 +35,7 @@ typeset -U path
 path=($^path(N-/))
 
 export PATH
-# # Dodaj narzędzia zestawu platformy .NET Core
-# export PATH="$PATH:/Users/lstrzepek/.dotnet/tools"
-#
-# # Export local bin
-# export PATH="$PATH:/Users/lstrzepek/.local/bin"
 
+if [[ -f ~/.secret.zsh ]]; then
+  . ~/.secret.zsh
+fi

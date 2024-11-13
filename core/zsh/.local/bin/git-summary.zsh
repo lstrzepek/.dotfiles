@@ -44,6 +44,24 @@ has_unpushed_commits() {
   fi
 }
 
+# Function to count unpushed commits
+count_unpushed_commits() {
+  local branch=$(get_current_branch)
+  if ! git rev-parse --verify HEAD >/dev/null 2>&1; then
+    # No commits yet
+    echo 0
+    return
+  fi
+  
+  if ! git show-ref --verify --quiet "refs/remotes/origin/$branch"; then
+    # No remote branch
+    echo $(git rev-list --count HEAD)
+    return
+  fi
+  
+  echo $(git rev-list --count origin/$branch..HEAD)
+}
+
 # Main script
 if [ -z "$1" ]; then
   exit 0
@@ -60,11 +78,11 @@ if is_git_repository "$1"; then
     local changes="*"
   fi
   
-  if [[ $has_unpushed -eq 0 ]]; then
-    local unpushed="󰅧"
+  if [[ $count_unpushed_commits != 0 ]]; then
+    local unpushed=" 󰅧"
   fi
   
-    echo " $branch ${unpushed:- } #[fg=magenta,bold]${changes:- }#[fg=white,nobold]"
+    echo " $branch#[fg=magenta,bold]${changes:-}#[fg=white,nobold]${unpushed:-} "
   
   popd >/dev/null
 else
