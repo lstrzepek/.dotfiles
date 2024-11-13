@@ -53,10 +53,12 @@ function setup_minimal_prompt() {
 #      fi
 #      git_info=" %F{blue}[%f ${vcs_info_msg_0_}%f${git_status}%F{blue}]%f"
 #    fi
-    
+    if [[ -n $VIRTUAL_ENV_PROMPT ]]; then
+      venv_info=" [$VIRTUAL_ENV_PROMPT] "
+    fi
     # Set the prompt: cyan directory, blue git branch with magenta status indicator
     #PROMPT="%F{cyan}${current_dir}%f${git_info} %F{green}%f "
-    PROMPT="%F{cyan}${current_dir}%f %F{green}%f "
+    PROMPT="%F{cyan}${current_dir}%f%F{yellow}${venv_info:- }%f%F{green}%f "
   }
 }
 

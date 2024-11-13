@@ -14,6 +14,7 @@ program_codes=(
     "top"   ""
     "htop"  ""
     "btop"  ""
+    "python"  ""
 )
 
 flags_map=(
