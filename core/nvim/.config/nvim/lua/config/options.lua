@@ -1,9 +1,10 @@
-
 vim.opt.expandtab = true
-vim.opt.tabstop=2
-vim.opt.softtabstop=2
-vim.opt.shiftwidth=2
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.autoindent = true
+-- Transparency for floating
+vim.opt.pumblend = 10
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
